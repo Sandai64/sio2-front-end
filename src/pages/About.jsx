@@ -7,7 +7,7 @@ export default function About() {
       <div className='container mx-auto mt-16'>
         <p className='px-2 py-1 text-4xl font-black border-b border-black rounded-b shadow-lg w-max'>About Us</p>
         <div className='flex mt-8 space-x-8'>
-          <img src='/img/erwan.jpg' className='w-64 shadow-lg rounded-xl'/>
+          <img src='/img/erwan.jpg' className='w-64 shadow-lg rounded-xl' alt='Erwan Egasse'/>
           <div>
             <div className='flex items-center mb-1 space-x-2 border-b border-gray-800 w-max'>
               <Edit3 size={18}/>
