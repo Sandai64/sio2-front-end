@@ -81,7 +81,9 @@ export default function SingleProductView() {
     <div>
       <div className='container px-4 mt-16 sm:px-0 sm:mx-auto'>
         <p className='px-2 py-1 text-4xl font-black border-b border-black rounded-b shadow-lg w-max'><Link to='/products'>Products</Link> {pageHeadingDOM}</p>
-        {productInfoView}
+        <div className='mt-8'>
+          {productInfoView}
+        </div>
       </div>
     </div>
   );
