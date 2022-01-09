@@ -8,27 +8,31 @@ export default function Products() {
   /* Fetch all products */
   let [productsList, setProductsList] = useState(<LoadingSpinner/>);
 
-  useEffect(async () => {
-    /* Fetch products via API */
-    let filledProductsList = [];
+  useEffect(() => {
+    async function fetchData() {
+      /* Fetch products via API */
+      let filledProductsList = [];
 
-    const productsListRaw = await ProductAPI.getAllProducts();
+      const productsListRaw = await ProductAPI.getAllProducts();
 
-    productsListRaw.forEach((productItemRaw) => {
-        // Loop over inidividual products
-        filledProductsList.push(
-          <ProductCard
-            title={productItemRaw.name}
-            excerpt={productItemRaw.description}
-            price={productItemRaw.price_tax_free}
-            imageURL={productItemRaw.image_path}
-            linkID={productItemRaw.id}
-            key={productItemRaw.slug}
-          />
-        );
-      });
+      productsListRaw.forEach((productItemRaw) => {
+          // Loop over inidividual products
+          filledProductsList.push(
+            <ProductCard
+              title={productItemRaw.name}
+              excerpt={productItemRaw.description}
+              price={productItemRaw.price_tax_free}
+              imageURL={productItemRaw.image_path}
+              linkID={productItemRaw.id}
+              key={productItemRaw.slug}
+            />
+          );
+        });
 
-      setProductsList(filledProductsList);
+        setProductsList(filledProductsList);
+    };
+
+    fetchData();
   }, []);
   
   return (

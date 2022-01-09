@@ -8,6 +8,7 @@ const getProductByID = (productID) => {
   return axios.get(`/api/product/get/${productID}`).then((r) => r.data).catch(e => e.response.data);
 };
 
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
   getAllProducts,
   getProductByID,
