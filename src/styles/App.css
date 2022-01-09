@@ -1,0 +1,22 @@
+.h-screen {
+    /* Navbar workaround */
+    height: calc(100vh - 4rem) !important;
+}
+
+/* Hide scrollbar */
+.hide-scrollbar {
+    overflow-y: scroll !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important;  /* Internet Explorer 10+ */
+}
+.hide-scrollbar::-webkit-scrollbar { /* WebKit */
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.homepage-bg {
+    background-image: url('../assets/bg-7.jpg');
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 3.5rem);
+}
