@@ -12,7 +12,9 @@ import Categories from './pages/Categories';
 import Home       from './pages/Home';
 import Products   from './pages/Products';
 import About      from './pages/About';
-import SingleProductView from './pages/SingleProductView';
+import SingleProductView  from './pages/SingleProductView';
+import SingleCategoryView from './pages/SingleCategoryView';
+import AdminLogin         from './pages/AdminLogin';
 
 function App() {
   return (
@@ -24,8 +26,10 @@ function App() {
           <Route path='/products' element={<Products/>}/>
           <Route path='/product/:id' element={<SingleProductView/>}/>
           <Route path='/categories' element={<Categories/>}/>
+          <Route path='/category/:id' element={<SingleCategoryView/>}/>
           <Route path='/blog' element={<Blog/>}/>
           <Route path='/about' element={<About/>}/>
+          <Route path='/login' element={<AdminLogin/>}/>
           <Route path='*' element={<NotFound/>}/>
         </Routes>
       </div>
