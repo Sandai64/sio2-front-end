@@ -40,7 +40,7 @@ export default function Categories() {
     <div>
       <div className='container px-4 mt-16 sm:px-0 sm:mx-auto'>
         <p className='px-2 py-1 text-4xl font-black border-b border-black rounded-b shadow-lg w-max'>Categories</p>
-        <div className='grid grid-cols-4 gap-8 mt-8'>
+        <div className='grid grid-cols-3 gap-8 mt-8 xl:grid-cols-4'>
           {categoriesList}
         </div>
       </div>
