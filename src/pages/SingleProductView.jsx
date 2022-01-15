@@ -35,7 +35,7 @@ export default function SingleProductView() {
         <div className='flex mt-8 space-x-6'>
           {/* Left pane : img + order btn */}
           <div className=''>
-            <img src={`/img/${productInfo.image_path}`} className='w-64 shadow-lg rounded-xl' alt={productInfo.name}/>
+            <img src={productInfo.image_b64} className='w-64 shadow-lg rounded-xl' alt={productInfo.name}/>
             <div className='w-64 p-2 mt-2 transition-all bg-black shadow-lg cursor-pointer rounded-xl hover:scale-105'>
               <p className='text-lg font-bold text-center text-white'>Order now</p>
             </div>

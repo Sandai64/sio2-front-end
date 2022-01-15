@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return (
-      <nav className='fixed top-0 flex flex-grow w-full py-3 bg-black shadow-lg select-none'>
+      <nav className='fixed top-0 z-20 flex flex-grow w-full py-3 bg-black shadow-lg select-none'>
         <Link to='/' className='flex items-center px-4 space-x-2'>
           <Flame color='white' size={28}/>
           <p className='text-2xl leading-none text-white'>Afterwork</p>
@@ -21,7 +21,8 @@ export default function Navbar() {
             <Link to='/blog' className='px-3 py-1 transition-all rounded hover:bg-gray-400 hover:font-bold hover:text-black'>Blog</Link>
           </li>
         </ul>
-        <div className='flex items-center justify-end px-4 text-white'>
+        <div className='flex items-center justify-end px-4 space-x-4 text-white'>
+          <Link to='/login' className='px-2 py-1 transition-all rounded hover:bg-gray-400 hover:font-bold hover:text-black'>Administration</Link>
           <Link to='/about' className='px-2 py-1 transition-all rounded hover:bg-gray-400 hover:font-bold hover:text-black'>About Us</Link>
         </div>
       </nav>

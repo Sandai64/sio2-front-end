@@ -22,7 +22,7 @@ export default function Products() {
               title={productItemRaw.name}
               excerpt={productItemRaw.description}
               price={productItemRaw.price_tax_free}
-              imageURL={productItemRaw.image_path}
+              imageB64={productItemRaw.image_b64}
               linkID={productItemRaw.id}
               key={productItemRaw.slug}
             />
@@ -39,7 +39,7 @@ export default function Products() {
     <div>
       <div className='container px-4 mt-16 sm:px-0 sm:mx-auto'>
         <p className='px-2 py-1 text-4xl font-black border-b border-black rounded-b shadow-lg w-max'>Products</p>
-        <div className='grid grid-cols-4 gap-8 mt-8'>
+        <div className='grid grid-cols-3 gap-8 mt-8 mb-16 sm:grid-cols-4 xl:grid-cols-5'>
           {productsList}
         </div>
       </div>
