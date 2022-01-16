@@ -75,7 +75,7 @@ export default function SingleProductView() {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
   
   return (
     <div>

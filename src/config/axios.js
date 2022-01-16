@@ -8,18 +8,19 @@ const instance = axios.create({
 
 instance.interceptors.request.use((config) => {
   const user = localStorage.getItem('user');
-  console.log(JSON.parse(user).token);
+
   if (user) {
     const token = jwtDecode(JSON.parse(user).token);
-    console.log(token);
+
     if (token['exp'] * 1000 < Date.now()) {
       localStorage.removeItem('token'); // Expired token
+      config.headers.Authorization = '';
     } else {
-      config.headers.Authorization = 'Bearer ' + token; // Valid token
+      config.headers["Authorization"] = 'Bearer ' + JSON.parse(user).token; // Valid token
     }
   }
 
   return config;
-})
+});
 
 export default instance;
