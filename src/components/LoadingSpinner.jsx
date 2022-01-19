@@ -1,10 +1,10 @@
 import '../styles/output.css';
-import { Loader } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 // import { Link } from "react-router-dom";
 
 export default function LoadingSpinner() {
     return (
-      <Loader color='black' size={64} className='animate-spin'/>
+      <Loader2 color='black' size={64} className='animate-spin'/>
     );
 }

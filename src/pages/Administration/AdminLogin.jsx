@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import '../styles/output.css';
-import { circuitBoard } from 'hero-patterns';
-import AuthAPI from '../services/AuthAPI';
+import '../../styles/output.css';
+import { curtain } from 'hero-patterns';
+import AuthAPI from '../../services/AuthAPI';
 
 export default function AdminLogin() {
 
@@ -9,7 +9,7 @@ export default function AdminLogin() {
     // MOUNT HOOK
     // Setup page style
     let pageBGEl = document.querySelector('body');
-    pageBGEl.style.backgroundImage = circuitBoard('#ffffff', 0.1);
+    pageBGEl.style.backgroundImage = curtain('#ffffff', 0.1);
     pageBGEl.style.backgroundColor = '#1a1a1a';
 
     return () => {
@@ -30,7 +30,6 @@ export default function AdminLogin() {
   async function handleSubmit(e) {
     e.preventDefault();
     const token = await AuthAPI.authLogin(username, password);
-    console.log(token);
 
     if (token.code && token.code === 401) {
       setErrorBanner(
@@ -45,6 +44,10 @@ export default function AdminLogin() {
           <p className='italic leading-none text-center'>You'll be redirected in a few seconds...</p>
         </div>
       );
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 2500);
     }
   }
 

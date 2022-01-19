@@ -1,35 +1,30 @@
 import '../styles/output.css';
-import { Edit3, AtSign, Cpu, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function About() {
   return (
     <div>
-      <div className='container mx-auto mt-16'>
+      <div className='container px-4 mx-auto mt-16 sm:px-0'>
         <p className='px-2 py-1 text-4xl font-black border-b border-black rounded-b shadow-lg w-max'>About Us</p>
-        <div className='flex mt-8 space-x-8'>
-          <img src='/img/erwan.jpg' className='w-64 shadow-lg rounded-xl' alt='Erwan Egasse'/>
+        <div className='flex justify-between mt-8 space-x-8'>
           <div>
-            <div className='flex items-center mb-1 space-x-2 border-b border-gray-800 w-max'>
-              <Edit3 size={18}/>
-              <p className='text-xl'>Developed by</p>
+            <p className='text-xl font-bold'>Welcome to Your Happy Place.</p>
+            <p className='w-3/4'>
+              ...Where the home team is always playing, your favorite beer is on draft, the cocktails are made with extra love, and the kitchen is serving up some of the best bar food you'll find.
+            </p>
+            <div className='flex mt-8'>
+              <div onClick={'showNewsletterActionModal'} className='p-4 font-bold leading-none text-white transition-all bg-black rounded-lg cursor-pointer hover:scale-105 hover:bg-gray-900'>Subscribe to our newsletter</div>
             </div>
-            <p className='font-bold'>Erwan Egasse</p>
-
-            <div className='flex items-center mt-2 mb-1 space-x-2 border-b border-gray-800 w-max'>
-              <AtSign size={18}/>
-              <p className='text-xl'>Contact information</p>
-            </div>
-            <p>Email — contact@erwan.sh</p>
-
-            <div className='flex items-center mt-2 mb-1 space-x-2 border-b border-gray-800 w-max'>
-              <Cpu size={18}/>
-              <p className='text-xl'>Technologies used</p>
-            </div>
-            <p><a href='https://github.com/erwangse/sio2-front-end' className='flex items-center'><ExternalLink size={18} className='mr-1'/> Front-end — ReactJS, TailwindCSS</a></p>
-            <p><a href='https://github.com/erwangse/sio2-back-end' className='flex items-center'><ExternalLink size={18} className='mr-1'/> Back-end — SymfonyPHP</a></p>
           </div>
+          <img src='/img/banner.jpg' className='hidden mx-auto shadow-lg sm:block sm:h-48 xl:h-96 rounded-xl' alt='Erwan Egasse'/>
         </div>
       </div>
+      <Link to='/credits' className='absolute bottom-0 right-0 flex items-center p-4 m-8 space-x-1 text-white transition-all bg-black rounded-lg shadow-lg cursor-pointer hover:scale-105 hover:bg-gray-900'>
+        <ArrowUpRight color='white'/>
+        <p className='leading-none'>Check out the developer !</p>
+      </Link>
+      {'WIP: newsletterActionModal'}
     </div>
   );
 }

@@ -1,7 +1,11 @@
 import '../styles/output.css';
 import { Flame } from 'lucide-react';
-
 import { Link } from 'react-router-dom';
+
+/* 
+ * Design : Navbar should be immutable,
+ * this simplifies site structure and renders nested components possible.
+ */
 
 export default function Navbar() {
     return (
@@ -22,7 +26,7 @@ export default function Navbar() {
           </li>
         </ul>
         <div className='flex items-center justify-end px-4 space-x-4 text-white'>
-          <Link to='/login' className='px-2 py-1 transition-all rounded hover:bg-gray-400 hover:font-bold hover:text-black'>Administration</Link>
+          <Link to='/admin' className='px-2 py-1 transition-all rounded hover:bg-gray-400 hover:font-bold hover:text-black'>Administration</Link>
           <Link to='/about' className='px-2 py-1 transition-all rounded hover:bg-gray-400 hover:font-bold hover:text-black'>About Us</Link>
         </div>
       </nav>
