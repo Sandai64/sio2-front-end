@@ -18,6 +18,17 @@ const authLogin = (username, password) => {
   .catch((e) => e.response.data);
 }
 
+const authGetUsername = () => {
+  const user = localStorage.getItem('user');
+
+  if (user) {
+    const token = jwtDecode(JSON.parse(user).token);
+    console.log(token);
+  }
+
+  return false;
+}
+
 const authLogout = () => {
   localStorage.removeItem('user');
 }

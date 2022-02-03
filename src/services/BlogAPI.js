@@ -1,4 +1,5 @@
 import axios from '../config/axios';
+import AuthAPI from './AuthAPI';
 
 const getAllBlogPosts = () => {
   return axios.get('/api/blog/get/posts/all').then((r) => r.data).catch((e) => e.response.data);
@@ -17,8 +18,9 @@ const getBlogCategoryByID = (blogCategoryID) => {
 };
 
 const createBlogPost = (postTitle, postContent) => {
-  return axios.post('/api/writer/create/post/', {postTitle, postContent})
+  return axios.post('/api/writer/create/post/', {postTitle, postContent, username: AuthAPI.})
 }
+
 
 const createBlogCategory = (categoryTitle) => {
   return axios.post('/api/writer/create/category/', {categoryTitle})
