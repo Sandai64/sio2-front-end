@@ -19,6 +19,7 @@ const authLogin = (username, password) => {
 }
 
 const authLogout = () => {
+  console.log('AuthApi: authLogout() called.');
   localStorage.removeItem('user');
 }
 
@@ -27,18 +28,17 @@ const authRegister = (username, password) => {
 }
 
 const authIsAuthenticated = async () => {
+  console.log('AuthAPI: authIsAuthenticated() called.');
+
   const authResult = await axios.get('https://localhost:8000/api/auth/jwt/test')
   .then((r) => r.status)
   .catch((e) => e.response.status);
 
-  if (authResult === 200) {
-    return true
-  }
-
-  return false;
+  return (authResult === 200);
 }
 
 const authGTFO = () => {
+  console.log('AuthApi: authGTFO() called.');
   authLogout();
   window.location.pathname = "/admin";
 }
@@ -48,10 +48,14 @@ const authGTFO = () => {
  * Returns false if the token couldn't be found or decoded properly.
  */
 const getDecodedLocalToken = () => {
+  console.log('AuthAPI: getDecodedLocalToken() called.');
+
   const user = localStorage.getItem('user');
+  console.log('AuthAPI: got localStorage user:', user);
 
   if (user) {
     const token = jwtDecode(JSON.parse(user).token);
+    console.log('AuthAPI: user found, decoded local JWT:', token);
     return token;
   }
 

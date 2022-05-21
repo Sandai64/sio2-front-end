@@ -13,8 +13,10 @@ export default function AdminNavbar() {
   }
 
   const localToken = AuthAPI.getDecodedLocalToken();
-  const isUserAdmin = localToken.roles.includes('ROLE_ADMIN');
-
+  
+  let isUserAdmin = false;
+  if (localToken && localToken.roles.includes('ROLE_ADMIN')) { isUserAdmin = true; }
+  
   /* Functions end */
 
   const current_path = useLocation().pathname;

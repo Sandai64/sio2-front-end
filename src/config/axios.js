@@ -13,7 +13,7 @@ instance.interceptors.request.use((config) => {
     const token = jwtDecode(JSON.parse(user).token);
 
     if (token['exp'] * 1000 < Date.now()) {
-      localStorage.removeItem('token'); // Expired token
+      localStorage.removeItem('user'); // Expired token
       config.headers.Authorization = '';
     } else {
       config.headers["Authorization"] = 'Bearer ' + JSON.parse(user).token; // Valid token
