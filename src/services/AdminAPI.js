@@ -11,8 +11,18 @@ async function updateUserPassword(password) {
   })
 }
 
+async function resetUserPassword(username) {
+  return axios.get(`/api/admin/user/password/reset/${username}`)
+}
+
+async function deleteUser(username) {
+  return axios.get(`/api/admin/user/delete/${username}`)
+}
+
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
   getAllUsers,
   updateUserPassword,
+  resetUserPassword,
+  deleteUser,
 };
