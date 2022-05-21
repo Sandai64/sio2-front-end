@@ -17,8 +17,8 @@ export default function AdminHandler() {
 
   useEffect(() => {
     AuthAPI.authIsAuthenticated()
-    .then((r) => {
-      if (r) {
+    .then((authStatus) => {
+      if (authStatus) {
         setShownScreen(<AdminDashboard/>);
       } else {
         setShownScreen(<AdminLogin/>)
