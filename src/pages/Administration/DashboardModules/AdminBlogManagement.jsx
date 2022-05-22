@@ -1,5 +1,6 @@
-import { Plus, X } from "lucide-react";
-import { useState } from "react";
+import { Plus, X, Pencil } from "lucide-react";
+import { useState, useEffect } from "react";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 import BlogAPI from "../../../services/BlogAPI";
 import AdminNavbar from "./AdminNavbar"
 
@@ -13,6 +14,8 @@ export default function AdminBlogManagementModule() {
   const [formPostContent, setFormPostContent] = useState();
   const [formPostCategory, setFormPostCategory] = useState();
   const [formCategoryTitle, setFormCategoryTitle] = useState();
+
+  const [postsList, setPostsList] = useState(<LoadingSpinner/>);
 
   // Form handlers
   const handlePostTitleChange = (e) => {
@@ -29,6 +32,30 @@ export default function AdminBlogManagementModule() {
     setFormPostTitle();
     setFormPostContent();
   }
+
+  useEffect(() => {
+    BlogAPI.getAllBlogPosts().then((postsList) => {
+      let completePostsList = [];
+  
+      postsList.forEach((postItem) => {
+        completePostsList.push(
+          <div key={`post-unique-${postItem.id}`} className="flex items-center justify-between w-full px-4 py-2 border rounded-lg">
+            <div className="flex items-center justify-between">
+              <Pencil size={24}/>
+              <p className="ml-4 text-lg font-medium leading-tight text-ellipsis">{postItem.title}</p>
+            </div>
+
+            <div className="flex items-center">
+              <span onClick={() => 'handleDeletePost(postItem.id)'} className="p-2 text-white transition-all bg-black rounded-lg shadow cursor-pointer hover:bg-gray-900">Delete post</span>
+            </div>
+
+          </div>
+        );
+      });
+  
+      setPostsList(completePostsList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])});
 
   return (
     <div className='flex h-screen'>
@@ -77,8 +104,10 @@ export default function AdminBlogManagementModule() {
           <div>
             <p className="mb-2 italic font-light">Blog posts</p>
             <div className="grid grid-cols-1 gap-4">
-              {/*users_list*/}
-              <div className="flex items-center justify-start px-4 py-2 border rounded-lg">
+              {/* posts list */}
+              <div className="flex flex-col items-start justify-start px-4 py-2 space-y-2 border rounded-lg">
+                { postsList }
+                
                 <div onClick={() => setShowModalCreatePost(true)} className="flex items-center justify-center p-2 space-x-2 text-white transition-all bg-black rounded-lg shadow cursor-pointer hover:bg-gray-900 hover:font-bold">
                   <Plus/>
                   <p>Create new</p>
@@ -89,7 +118,7 @@ export default function AdminBlogManagementModule() {
           <div>
             <p className="mb-2 italic font-light">Blog categories</p>
             <div className="grid grid-cols-1 gap-4">
-              {/*users_list*/}
+              {/* categories list */}
               <div className="flex items-center justify-start px-4 py-2 border rounded-lg">
                 <div onClick={() => setShowModalCreateCategory(true)} className="flex items-center justify-center p-2 space-x-2 text-white transition-all bg-black rounded-lg shadow cursor-pointer hover:bg-gray-900 hover:font-bold">
                   <Plus/>

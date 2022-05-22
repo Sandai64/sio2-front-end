@@ -1,7 +1,7 @@
 import axios from '../config/axios';
 
 const getAllBlogPosts = () => {
-  return axios.get('/api/blog/get/posts/all').then((r) => r.data).catch((e) => e.response.data);
+  return axios.get('/api/blog/get/posts/all').then((r) => r.data).catch((e) => e.data);
 };
 
 const getAllBlogCategories = () => {
@@ -9,7 +9,7 @@ const getAllBlogCategories = () => {
 };
 
 const getBlogPostByID = (blogPostID) => {
-  return axios.get(`/api/blog/get/post/${blogPostID}`).then((r) => r.data).catch(e => e.response.data);
+  return axios.get(`/api/blog/get/post/${blogPostID}`).then((r) => r.data).catch(e => e.data);
 };
 
 const getBlogCategoryByID = (blogCategoryID) => {
@@ -17,11 +17,11 @@ const getBlogCategoryByID = (blogCategoryID) => {
 };
 
 const createBlogPost = (postTitle, postContent) => {
-  return axios.post('/api/writer/create/post/', {postTitle, postContent})
+  return axios.post('/api/writer/create/post', {postTitle, postContent})
 }
 
 const createBlogCategory = (categoryTitle) => {
-  return axios.post('/api/writer/create/category/', {categoryTitle})
+  return axios.post('/api/writer/create/category', {categoryTitle})
 }
 
 const deleteBlogCategory = (categoryID) => {
